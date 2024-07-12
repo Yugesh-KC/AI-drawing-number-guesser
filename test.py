@@ -60,7 +60,29 @@ class DrawingApp:
         if 0 <= row < 28 and 0 <= col < 28:
             # Fill the rectangle with black color to simulate drawing
             self.canvas.itemconfig(self.pixels[row][col], fill="black")
+            self.canvas.itemconfig(self.pixels[row][col+1],fill="black")
+            self.canvas.itemconfig(self.pixels[row][col-1],fill="black")
+            self.canvas.itemconfig(self.pixels[row+1][col], fill="black")
+            self.canvas.itemconfig(self.pixels[row+1][col+1],fill="black")
+            self.canvas.itemconfig(self.pixels[row+1][col-1],fill="black")
+            self.canvas.itemconfig(self.pixels[row-1][col], fill="black")
+            self.canvas.itemconfig(self.pixels[row-1][col+1],fill="black")
+            self.canvas.itemconfig(self.pixels[row-1][col-1],fill="black")
+        
+
+
+
             self.array[row][col]=0
+            self.array[row][col+1]=0
+            self.array[row][col-1]=0
+            self.array[row+1][col]=0
+            self.array[row+1][col+1]=0
+            self.array[row+1][col-1]=0
+            self.array[row-1][col]=0
+            self.array[row-1][col+1]=0
+            self.array[row-1][col-1]=0            
+          
+            
 
     def guess(self):
         image = Image.new("L", (28, 28))  # "L" mode for grayscale, 255 for white background

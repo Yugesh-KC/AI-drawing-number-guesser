@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 
-print("Welcome to the NeuralNine (c) Handwritten Digits Recognition v0.1")
 
 # Decide if to load an existing model or to train a new one
 train_new_model = False
@@ -66,14 +65,30 @@ def guesser(image_path):
     predicted_digit = np.argmax(prediction)
     probability = prediction[0][predicted_digit]
 
-    # Display the preprocessed image
-    plt.imshow(img.reshape(28, 28), cmap='gray')
-    plt.title(f"Predicted Digit: {predicted_digit}, Probability: {probability:.2f}")
-    plt.axis('off')
-    plt.show()
+    # # Display the preprocessed image
+    # plt.imshow(img[0], cmap='gray')
+    # plt.title(f"Predicted Digit: {predicted_digit}, Probability: {probability:.2f}")
+    # plt.axis('off')
+    # plt.show()
 
     return predicted_digit, probability
 
-# Example usage:
-print(guesser('digits/digit4.png'))
-print(guesser('zero.png'))
+mnist = tf.keras.datasets.mnist
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+X_train = np.where(X_train > 1, 255, X_train)
+X_test = np.where(X_test > 1, 255, X_test)
+
+
+# for i in range (2):
+#     img=X_test[i]
+#     plt.title(i)
+#     plt.imshow(img, cmap='gray')
+#     # plt.title(f"Predicted Digit: {predicted_digit}, Probability: {probability:.2f}")
+#     plt.axis('off')
+#     plt.show()
+#     print(X_test.shape)
+
+
+
+# print(guesser('digits/digit4.png'))
+# print(guesser('zero.png'))
