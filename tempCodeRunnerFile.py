@@ -1,6 +1,3 @@
-img=X_test[0]
-plt.imshow(img, cmap='gray')
-# plt.title(f"Predicted Digit: {predicted_digit}, Probability: {probability:.2f}")
-plt.axis('off')
-plt.show()
-Resize to match model input shape
+
+    X_train = np.where(X_train > 125, 255, 0)
+    X_test = np.where(X_test > 125, 255, )
